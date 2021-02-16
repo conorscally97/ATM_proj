@@ -5,6 +5,7 @@ public class ATM {
     private Scanner input = new Scanner(System.in);
     private int pin;
     public boolean authenticated;
+    private boolean attempted = false;
 
     private static final int BALANCE = 1;
     private static final int DEPOSIT = 2;
@@ -104,13 +105,19 @@ public class ATM {
             currentAccount = account2;
         }
         else {
+            if(attempted == true){
+                System.out.println("exceeded attempts, please remove card");
+                System.exit(0);
+            }
             System.out.println("Incorrect Account number or PIN\nPlease try again");
+            attempted = true;
             System.out.println("Account number:");
             thisAccountNumber = input.nextInt();
             System.out.println("PIN:");
             pin = input.nextInt();
-
             verifyUser(thisAccountNumber, pin);
+
+
             if (authenticated == false){
                 System.out.println("exceeded attempts, please remove card");
                 System.exit(0);
