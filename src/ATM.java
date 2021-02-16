@@ -87,6 +87,9 @@ public class ATM {
                 thisAccountNumber = 0;
                 System.out.println("\nThank you for using Fake Bank, Have a nice day");
                 System.exit(0);
+            default:
+                System.out.println("\nPlease choose an option between 1 and 5");
+                break;
         }
     }
 
